@@ -1,8 +1,12 @@
+import Header from "@/components/Header";
 
-const Page = ({ params }: ParamsWithSearch) => {
+const Page = async ({ params }: ParamsWithSearch) => {
+    const { id } = await params;
     return (
-        <div>
+        <div className="wrapper page">
+            <Header subHeader="andy.short101@gmail.com" title="Andy | Divine Development" userImg="/assets/images/dummy.jpg" />
             
+            <h1 className="text-2xl font-karla">USER ID: {id}</h1>
         </div>
     );
 };
