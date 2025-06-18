@@ -1,7 +1,7 @@
 
 const page = () => {
   return (
-    <div>page</div>
+    <main className="wrapper Page">Video Detail page</main>
   )
 }
 
