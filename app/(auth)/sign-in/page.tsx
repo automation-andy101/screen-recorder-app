@@ -42,9 +42,17 @@ const Page = () => {
                         <Image src="/assets/icons/logo.svg" alt="logo" width={40} height={40} />
                         <h1>SnapCast</h1>
                     </Link>
+
                     <p>Create and share your very first <span>SnapCast video</span> in no time!</p>
+
+                    <button>
+                        <Image src="/assets/icons/google.svg" alt="google" width={22} height={22} />
+                        <span>Sign in with Google</span>
+                    </button>
                 </section>
             </aside>
+
+            <div className="overlay" />
         </main>
     );
 };
