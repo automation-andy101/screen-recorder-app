@@ -4,13 +4,29 @@ import Link from 'next/link'
 import React from 'react'
 
 const VideoCard = ({ id, title, thumbnail, userImg, username, createdAt, views, visibility, duration }: VideoCardProps) => {
-  return (
+    console.log("id - " + id)
+    console.log("title - " + title)
+    console.log("thumbnail - " + thumbnail)
+    console.log("userImg - " + userImg)
+    console.log("username - " + username)
+    console.log("createdAt - " + createdAt)
+    console.log("views - " + views)
+    console.log("visibility - " + visibility)
+    console.log("duration - " + duration)
+   
+    return (
     <Link href={`/video/${id}`} className='video-card'>
         <Image src={thumbnail} alt="thumbnail" width={290} height={160} className="thumbnail" />
         <article>
             <div>
                 <figure>
-                    <Image src={userImg || '/assets/images/dummy.jpg'} alt="avatar" width={34} height={34} className='rounded-full aspect-square' />
+                    <Image 
+                        src={userImg} 
+                        alt="avatar" 
+                        width={34} 
+                        height={34} 
+                        className='rounded-full aspect-square' 
+                    />
                     <figcaption>
                         <h3>{username}</h3>
                         <p>{visibility}</p>

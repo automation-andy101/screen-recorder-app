@@ -141,8 +141,6 @@ export const getAllVideos = withErrorHandling(async (
         eq(videos.userId, currentUserId!)
     );
 
-    console.log("Andy1 - ", canSeeTheVideos)
-
     const whereCondition = searchQuery.trim()
         ? and(
             canSeeTheVideos,
@@ -150,14 +148,10 @@ export const getAllVideos = withErrorHandling(async (
         )
         : canSeeTheVideos;
 
-    console.log("Andy2 - ", whereCondition)
-
     const [{ totalCount }] = await db
         .select({ totalCount: sql<number>`count(*)` })
         .from(videos)
         .where(whereCondition)
-
-    console.log("Andy3 - ", totalCount)
 
     const totalVideos = Number(totalCount || 0);
     const totalPages = Math.ceil(totalVideos / pageSize);
@@ -180,4 +174,11 @@ export const getAllVideos = withErrorHandling(async (
                 pageSize
             }
         }
-}) 
+})
+
+export const getVideoById = withErrorHandling(async (videoId: string) => {
+    const [videoRecord] = await buildVideoWithUserQuery()
+        .where(eq(videos.id, videoId))
+
+    return videoRecord;
+})

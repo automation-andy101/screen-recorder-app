@@ -26,7 +26,7 @@ const uploadFileToBunny = (file: File, uploadUrl: string, accessKey: string): Pr
   })
 }
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [videoDuration, setVideoDuration] = useState(0);
@@ -182,4 +182,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
