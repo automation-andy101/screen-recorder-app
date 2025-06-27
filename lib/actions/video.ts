@@ -34,15 +34,15 @@ const revalidatePaths = (paths: string[]) => {
     paths.forEach((path) => revalidatePath(path));
 }
 
-const buildVideoWithUserQuery = () => {
-    return db   
-        .select({
-            video: videos,
-            user: { id: user.id, name: user.name, image: user.image }
-        })
-        .from(videos)
-        .leftJoin(user, eq(videos.userId, user.id))
-}
+const buildVideoWithUserQuery = () =>
+  db
+    .select({
+      video: videos,
+      user: { id: user.id, name: user.name, image: user.image },
+    })
+    .from(videos)
+    .leftJoin(user, eq(videos.userId, user.id));
+
 
 const validateWithArjet = async (fingerprint: string) => {
     const rateLimit = aj.withRule(
@@ -176,9 +176,11 @@ export const getAllVideos = withErrorHandling(async (
         }
 })
 
+
 export const getVideoById = withErrorHandling(async (videoId: string) => {
-    const [videoRecord] = await buildVideoWithUserQuery()
-        .where(eq(videos.id, videoId))
+    const [videoRecord] = await buildVideoWithUserQuery().where(
+        eq(videos.videoId, videoId)
+    );
 
     return videoRecord;
-})
+});

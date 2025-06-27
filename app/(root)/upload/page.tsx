@@ -9,10 +9,6 @@ import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 
 const uploadFileToBunny = (file: File, uploadUrl: string, accessKey: string): Promise<void> => {
-  
-    console.log("ANDY - 1 file - " + file)
-    console.log("ANDY - 2 access key - " + accessKey)
-    console.log("ANDY - 3 upload url - " + uploadUrl)
 
   return fetch(uploadUrl, {
     method: 'PUT',
